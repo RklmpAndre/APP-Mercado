@@ -1,5 +1,7 @@
 
-import beans.Produto;
+import java.util.ArrayList;
+import models.beans.Produto;
+import models.dao.*;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -12,8 +14,23 @@ import beans.Produto;
  */
 public class TestaProduto {
     public static void main(String[] args) {
-        Produto p = new Produto(10.4, 0,null,"Flanelinha","Pano de limepeza");
+        Produto p1 = new Produto(0, 0, 0, "Limpeza", "Limpezos", "Grandes Limpezas");
+        Produto p2 = new Produto(0, 0, 0, "Limpeza", "Limpezos", "Grandes Limpezas");
+        Produto p3 = new Produto(1, 0, 0, "Bebida", "Nhami", "Grandes Sedes");
+        Produto p4 = new Produto(2, 0, 0, "Higiene", "Shampoo", "Grandes Belezas");
         
-        System.out.println(p.toString());
+        ProdutoDAO produtos = new ProdutoDAO();
+        
+        boolean b = produtos.create(p1);
+        testaRetorno(b, "create");
+        
+    }
+    
+    public static void testaRetorno(boolean b, String operacao) {
+        if (b) { // testa se b == true
+            System.out.println("Operação realizada com sucesso !");
+        } else {
+            System.out.println("Falha na operação de " + operacao);
+        }
     }
 }
