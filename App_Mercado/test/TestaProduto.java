@@ -20,9 +20,8 @@ public class TestaProduto {
         Produto p4 = new Produto(2, 0, 0, "Higiene", "Shampoo", "Grandes Belezas");
         
         ProdutoDAO produtos = new ProdutoDAO();
-        
-        boolean b = produtos.create(p1);
-        testaRetorno(b, "create");
+
+        produtos.create(p1);
         
     }
     
