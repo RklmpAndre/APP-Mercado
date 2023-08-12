@@ -13,7 +13,7 @@ import models.beans.Produto;
  *
  * @author andre
  */
-public class ProdutoDAO {
+public class ProdutoDAO_BD {
 
     
     public void create(Produto p) {
