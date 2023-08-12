@@ -12,12 +12,13 @@ import java.util.Objects;
  */
 public class Produto {
     
+    
     private int id, qntd;
     private double valor;
     private String tipo, nome, descrição;
 
     public Produto(int id, double valor, int qntd, String tipo, String nome, String descrição) {
-        setQuantidade(qntd);
+        this.setQuantidade(qntd);
         this.setId(id);
         this.setValor(valor);
         this.setTipo(tipo);
@@ -63,14 +64,13 @@ public class Produto {
 
     public void setNome(String nome) {
         try {
-            this.nome = nome;
-            
+            if(nome != null){
+                this.nome = nome;
+            }
         } catch (NullPointerException e) {
-            
-            System.out.println("O nome foi identificado como nullo, por conta disso foi atribuido um valor default");
-            this.nome = "Nome Faltando";
+            System.out.println("Erro de nulo" + e);
+            this.nome = "Nulo meu amigo";
         }
-        
     }
 
     public String getDescrição() {

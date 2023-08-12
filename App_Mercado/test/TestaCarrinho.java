@@ -1,5 +1,5 @@
 
-import beans.Carrinho;
+/*import beans.Carrinho;
 import beans.Produto;
 
 /*
@@ -11,7 +11,7 @@ import beans.Produto;
  *
  * @author vfroe_000
  */
-public class TestaCarrinho {
+/*public class TestaCarrinho {
     public static void main(String[] args) {
         Carrinho c = new Carrinho(100.2, "pixis");
         Produto caixa = new Produto(10.4, 0, null,"Flanelinha","Pano de limepeza");
@@ -24,4 +24,4 @@ public class TestaCarrinho {
         System.out.println(c.getCarrinho());
     }
     
-}
+}*/
