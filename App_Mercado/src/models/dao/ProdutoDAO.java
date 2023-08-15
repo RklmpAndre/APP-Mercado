@@ -24,7 +24,7 @@ public class ProdutoDAO implements DAO {
             this.cadastroProduto.put(p.getId(), p);
             return true;    
             }
-          }
+        }
         return false;
     }
 
@@ -58,7 +58,7 @@ public class ProdutoDAO implements DAO {
                 this.cadastroProduto.remove(p.getId());
                 return true;    
             }
-          }
+        }
         return false;
     }
     
