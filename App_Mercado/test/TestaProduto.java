@@ -14,43 +14,23 @@ import models.dao.*;
  */
 public class TestaProduto {
     public static void main(String[] args) {
-        Produto p1 = new Produto(10.90, 2, "Loucura", "nome", "descrição");
-        Produto p2 = new Produto(10.90, 2, "Loucura", "nome", "descrição");
         
-        
-        System.out.println(p1.getId());
-  
-        
-        
+        //Instancia o DAO
         ProdutoDAO produtos = new ProdutoDAO();
         
-        System.out.println("=====================TESTE CREATE==============================");
+        //Produtos
+        //Produto p3 = new Produto(1, 10, 32.90, null, "ValeRroz", "Pacote de arroz"); Da erro pelo nome ser nullo
+        //Produto p3 = new Produto(1, 10, 32.90, null, "ValeRroz", "Pacote de arroz"); Da erro pelo tipo ser nullo
+        Produto p3 = new Produto(1, 10, 32.90, "ValeRoz", null, "Pacote de arroz"); 
+        Produto p1 = new Produto(0, 11, 19.90, "Festivo", "Confetes", "Confetes festivos");
+        Produto p2 = new Produto(0, 10, 32.90, "Alimenticio", "ValeRroz", "Pacote de arroz");
         
-        testaRetorno(produtos.create(p1), "CREATE");//sucesso
-        //testaRetorno(produtos.create(p2), "CREATE");//erro
-        //testaRetorno(produtos.create(p3), "CREATE");//sucesso
-        //testaRetorno(produtos.create(p4), "CREATE");//sucesso
-        //testaRetorno(produtos.create(p5), "CREATE");//sucesso
-        
-        System.out.println("=====================TESTE READ==============================");
-        
-        testaRetorno(produtos.read(p1) != null, "READ");//sucesso
-        //testaRetorno(produtos.read(p2) != null, "READ");//sucesso por terem o mesmo id
-        //testaRetorno(produtos.read(p3) != null, "READ");//sucesso
-        //(produtos.read(p6) != null, "READ");//erro
-        
-        System.out.println("=====================TESTE DELETE==============================");
-        
-        testaRetorno(produtos.delete(p1), "DELETE");//sucesso
-        //testaRetorno(produtos.delete(p6), "DELETE");//erro
-        
-        testaRetorno(produtos.read(p1) != null,"READ");//erro
-        
-        System.out.println("=====================TESTE UPDATE==============================");
+
+        /*dará erro por ser nulo
+        Produto p2 = new Produto(19.90, 20, "Festivo", null, "Confetes festivos");*/
         
         
-        //---------------------------------
-        produtos.listar();
+        
         
     }
     
