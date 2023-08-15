@@ -16,7 +16,7 @@ public class Carrinho {
     private String tipoPagamento;
     private boolean entrega = false;
     private ArrayList<Produto> carrinho;
-              
+    
     //ProdutoLista, ValorTotal, Entrega, TipoPagamento, ID, usuario
     
     public Carrinho(double valorTotal, String tipoPagamento) {
@@ -93,7 +93,7 @@ public class Carrinho {
     public void addProduto(Produto p){
         carrinho.add(p);
     }
-     
+    
     public void removeProduto(Produto p){
         carrinho.remove(p);
     }

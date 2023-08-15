@@ -18,11 +18,11 @@ public class ProdutoDAO implements DAO {
     
     @Override
     public boolean create(Object obj) {
-        if(obj instanceof Produto){
+        if(obj != null && obj instanceof Produto){
             Produto p = (Produto) obj;
             if(this.read(p) == null){
-            this.cadastroProduto.put(p.getId(), p);
-            return true;    
+                this.cadastroProduto.put(p.getId(), p);
+                return true;    
             }
         }
         return false;
@@ -30,24 +30,25 @@ public class ProdutoDAO implements DAO {
 
     @Override
     public Object read(Object obj) {
-        try {
-            if(obj != null && obj instanceof Produto){
-                Produto p = (Produto) obj;
-                if(this.cadastroProduto.get(p.getId()) != null){
-                    return cadastroProduto.get(p.getId());
-                }
+        if(obj != null && obj instanceof Produto){
+            Produto p = (Produto) obj;
+            if(this.cadastroProduto.get(p.getId()) != null){
+                return cadastroProduto.get(p.getId());
             }
-        } catch (NullPointerException e) {
-            System.out.println("erro por conta de: " + e);
         }
+
         return null;
     }    
 
     @Override
     public boolean update(Object obj) {
-        
-        return false;
-        
+        if(obj != null && obj instanceof Produto){
+            Produto p = (Produto) obj;
+            if(this.delete(p.getId()) == true){
+                return this.create(p);
+            }
+        }
+        return false; 
     }
 
     @Override
@@ -60,6 +61,5 @@ public class ProdutoDAO implements DAO {
             }
         }
         return false;
-    }
-    
+    } 
 }
