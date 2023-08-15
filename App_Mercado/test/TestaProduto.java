@@ -14,45 +14,51 @@ import models.dao.*;
  */
 public class TestaProduto {
     public static void main(String[] args) {
-        Produto p1 = new Produto(0, 0, 0, "Limpeza", "Limpezos", "Grandes Limpezas");
-        Produto p2 = new Produto(0, 0, 0, "Limpeza", "Limpezos", "Grandes Limpezas");
-        Produto p3 = new Produto(1, 0, 0, "Bebida", "Nhami", "Grandes Sedes");
-        Produto p4 = new Produto(2, 0, 0, "Higiene", "Shampoo", "Grandes Belezas");
-        Produto p5 = new Produto(2, 0, 0, "Higiene", "Shampoo", "Grandes Belezas");
-        Produto p6 = new Produto(4, 0, 0, null, null, null);
+        Produto p1 = new Produto(10.90, 2, "Loucura", "nome", "descrição");
+        Produto p2 = new Produto(10.90, 2, "Loucura", "nome", "descrição");
         
-        System.out.println(p6.toString());
+        
+        System.out.println(p1.getId());
+  
+        
         
         ProdutoDAO produtos = new ProdutoDAO();
         
+        System.out.println("=====================TESTE CREATE==============================");
         
-        testaRetorno(produtos.create(p6), "create");
-        testaRetorno(produtos.create(null), "create");
-        testaRetorno(produtos.create(p1), "create");
-        testaRetorno(produtos.create(p2), "create");
-        testaRetorno(produtos.create(p4), "create");
-        testaRetorno(produtos.create(p5), "create");
-        testaRetorno(produtos.read(p5) != null, "read");
+        testaRetorno(produtos.create(p1), "CREATE");//sucesso
+        //testaRetorno(produtos.create(p2), "CREATE");//erro
+        //testaRetorno(produtos.create(p3), "CREATE");//sucesso
+        //testaRetorno(produtos.create(p4), "CREATE");//sucesso
+        //testaRetorno(produtos.create(p5), "CREATE");//sucesso
         
-        System.out.println("======================= teste delete ===================");
+        System.out.println("=====================TESTE READ==============================");
         
-        testaRetorno(produtos.delete(p1), "DELETE");
-        testaRetorno(produtos.read(p1) != null, "read");
+        testaRetorno(produtos.read(p1) != null, "READ");//sucesso
+        //testaRetorno(produtos.read(p2) != null, "READ");//sucesso por terem o mesmo id
+        //testaRetorno(produtos.read(p3) != null, "READ");//sucesso
+        //(produtos.read(p6) != null, "READ");//erro
         
-        System.out.println("======================= teste update mudança===================");
+        System.out.println("=====================TESTE DELETE==============================");
         
-        p4.setNome("Corações");
+        testaRetorno(produtos.delete(p1), "DELETE");//sucesso
+        //testaRetorno(produtos.delete(p6), "DELETE");//erro
         
-        System.out.println(produtos.read(p4));
+        testaRetorno(produtos.read(p1) != null,"READ");//erro
         
-        testaRetorno(produtos.read(p4) != null, "read");
+        System.out.println("=====================TESTE UPDATE==============================");
+        
+        
+        //---------------------------------
+        produtos.listar();
+        
     }
     
     public static void testaRetorno(boolean b, String operacao) {
         if (b) { // testa se b == true
-            System.out.println("Operação realizada com sucesso !");
+            System.out.println("Operacao realizada com sucesso!");
         } else {
-            System.out.println("Falha na operação de " + operacao);
+            System.out.println("Falha na operacao de " + operacao);
         }
     }
 }

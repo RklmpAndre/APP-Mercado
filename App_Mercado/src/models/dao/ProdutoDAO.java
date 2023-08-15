@@ -5,6 +5,7 @@
 package models.dao;
 
 import java.util.HashMap;
+import java.util.Map;
 import models.beans.Produto;
 
 /**
@@ -61,5 +62,10 @@ public class ProdutoDAO implements DAO {
             }
         }
         return false;
-    } 
+    }
+    public void listar() {
+        for(Map.Entry<Integer, Produto> l : cadastroProduto.entrySet()){
+            System.out.println(l);
+        }
+    }    
 }

@@ -12,35 +12,33 @@ import java.util.Objects;
  */
 public class Produto {
     
-    
-    private int id, qntd;
+    private static int id = 1;
+    private int qntd;
     private double valor;
-    private String tipo, nome, descrição;
+    private  final String nome;
+    private String tipo, descrição;
 
-    public Produto(int id, double valor, int qntd, String tipo, String nome, String descrição) {
+    public Produto(double valor, int qntd, String tipo, String nome, String descrição) {
+        this.nome = Objects.requireNonNull(nome);
         this.setQuantidade(qntd);
-        this.setId(id);
         this.setValor(valor);
         this.setTipo(tipo);
-        this.setNome(nome);
         this.setDescrição(descrição);
+        Produto.id += 1;
     }
     
     public double getValor() {
-        
         return valor;
     }
 
     public void setValor(double valor) {
-        this.valor = valor;
+        if(valor < 0){
+            throw new IllegalArgumentException("Valor nãao pode ser negativo");
+        }else this.valor = valor;
     }
 
     public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        return this.id;
     }
     
     public int getQuantidade() {
@@ -48,37 +46,33 @@ public class Produto {
     }
 
     public void setQuantidade(int qntd) {
-        this.qntd = qntd;
+        if(qntd < 0){
+            throw new IllegalArgumentException("Valor nãao pode ser negativo");
+        }else this.qntd = qntd;
+        
     }
     public String getTipo() {
         return tipo;
     }
 
     public void setTipo(String tipo) {
-        this.tipo = tipo;
+        if(Objects.requireNonNull(tipo) == null){
+            System.out.println("Tipo não pode ser nulo");
+        }else this.tipo = tipo;
     }
 
     public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        try {
-            if(nome != null){
-                this.nome = nome;
-            }
-        } catch (NullPointerException e) {
-            System.out.println("Erro de nulo" + e);
-            this.nome = "Nulo meu amigo";
-        }
+        return this.nome;
     }
 
     public String getDescrição() {
         return descrição;
     }
 
-    public void setDescrição(String descrição) {
-        this.descrição = descrição;
+    public void setDescrição(String descricao) {
+        if(Objects.requireNonNull(descricao) == null){
+            System.out.println("Descricao não pode ser nulo");
+        }else this.descrição = descricao; 
     }
 
     @Override
