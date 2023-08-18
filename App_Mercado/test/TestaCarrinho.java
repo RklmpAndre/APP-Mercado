@@ -1,6 +1,9 @@
 
-/*import beans.Carrinho;
-import beans.Produto;
+import java.util.ArrayList;
+import models.beans.Carrinho;
+import models.beans.Produto;
+
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -11,17 +14,19 @@ import beans.Produto;
  *
  * @author vfroe_000
  */
-/*public class TestaCarrinho {
+public class TestaCarrinho {
     public static void main(String[] args) {
+        //ArrayList<Produto> carrinho = new ArrayList();
+        
         Carrinho c = new Carrinho(100.2, "pixis");
-        Produto caixa = new Produto(10.4, 0, null,"Flanelinha","Pano de limepeza");
-        Produto pano = new Produto(1120.4, 1,null,"papelão","para armazenamonte");
+        Produto caixa = new Produto(1, 54, 54.6,"Flanelinha","Pano de limepeza", "limpa carros");
+        Produto pano = new Produto(4, 26, 98.6,"papelão","para armazenamento", "forma de caixa");
         
-        c.addProduto(caixa);
-        c.addProduto(caixa); 
         c.addProduto(pano);
+        c.addProduto(pano); 
         
-        System.out.println(c.getCarrinho());
+        c.listaProduto();
+        
     }
     
-}*/
+}
