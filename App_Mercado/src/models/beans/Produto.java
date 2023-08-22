@@ -13,14 +13,14 @@ import java.util.Objects;
 public class Produto {
     
     
-    private int id, qntd;
+    private int id; 
+    private int qntd;
     private double valor;
     private  final String nome;
     private String tipo, descricao;
 
-    public Produto(int id, int qntd, double valor, String nome, String tipo, String descricao) {
+    public Produto(int qntd, double valor, String nome, String tipo, String descricao) {
         this.nome = Objects.requireNonNull(nome, "Nome não pode ser null");
-        setId(id);
         setQuantidade(qntd);
         setValor(valor);
         setTipo(tipo);
@@ -93,35 +93,22 @@ public class Produto {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Produto other = (Produto) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.valor) != Double.doubleToLongBits(other.valor)) {
-            return false;
-        }
-        if (!Objects.equals(this.tipo, other.tipo)) {
-            return false;
-        }
-        if (!Objects.equals(this.nome, other.nome)) {
-            return false;
-        }
-        return Objects.equals(this.descricao, other.descricao);
+        if (obj == null) return false;
+        if(!(obj.getClass().isInstance(this))) return false;
+        if(this == obj) return true;
+        
+        Produto a = (Produto)obj;
+        return (this.nome.equals(a.getNome()) && this.tipo.equals(a.getTipo()) && this.descricao.equals(a.getDescricao()));
     }
 
     @Override
     public String toString() {
-        return "Produto{" + "qntd=" + getQuantidade() + ", valor=" + getValor() + ", nome=" + getNome() + ", tipo=" + getTipo() + ", descrição=" + getDescricao() + '}';
+        return "Produto{id=" + id + " qntd=" + qntd + ", valor=" + valor + ", nome=" + nome + ", tipo=" + tipo + ", descricao=" + descricao + '}';
     }
+
+    
+
+    
     
     
     

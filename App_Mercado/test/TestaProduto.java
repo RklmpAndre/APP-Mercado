@@ -19,15 +19,16 @@ public class TestaProduto {
         ProdutoDAO produtos = new ProdutoDAO();
         
         //Produtos
-        //Produto p3 = new Produto(1, 10, 32.90, null, "ValeRroz", "Pacote de arroz"); Da erro pelo nome ser nullo
-        //Produto p3 = new Produto(1, 10, 32.90, null, "ValeRroz", "Pacote de arroz"); Da erro pelo tipo ser nullo
-        Produto p3 = new Produto(1, 10, 32.90, "ValeRoz", null, "Pacote de arroz"); 
-        Produto p1 = new Produto(0, 11, 19.90, "Festivo", "Confetes", "Confetes festivos");
-        Produto p2 = new Produto(0, 10, 32.90, "Alimenticio", "ValeRroz", "Pacote de arroz");
+        Produto p = new Produto(0, 10.90, "André", "Alimento", "Grandes Alimentos");
+        Produto p1 = new Produto(0, 10.90, "André", "Alimento", "Grandes Alimentos");
+        Produto p2 = new Produto(0, 10.90, "Paulo", "Alimento", "Grandes Alimentos");
         
-
-        /*dará erro por ser nulo
-        Produto p2 = new Produto(19.90, 20, "Festivo", null, "Confetes festivos");*/
+        
+        produtos.create(p);
+        produtos.create(p1);
+        produtos.create(p2);
+        
+        produtos.listar();
         
         
         

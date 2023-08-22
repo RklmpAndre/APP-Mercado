@@ -10,7 +10,7 @@ package models.beans;
  */
 public class Pessoa {
     private String nome;
-    private int id;
+    private static int id;
 
     public Pessoa(String nome) {
         this.nome = nome;
