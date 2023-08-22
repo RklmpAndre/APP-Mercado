@@ -21,12 +21,11 @@ public class TestaProduto {
         //Produtos
         Produto p = new Produto(0, 10.90, "André", "Alimento", "Grandes Alimentos");
         Produto p1 = new Produto(0, 10.90, "André", "Alimento", "Grandes Alimentos");
-        Produto p2 = new Produto(0, 10.90, "Paulo", "Alimento", "Grandes Alimentos");
+        Produto p2 = new Produto(0, 10.90, "Daniel", "Alimento", "Grandes Alimentos");
         
-        
-        produtos.create(p);
-        produtos.create(p1);
-        produtos.create(p2);
+        testaRetorno(produtos.create(p), "CREATE");
+        testaRetorno(produtos.create(p1), "CREATE");
+        testaRetorno(produtos.create(p2), "CREATE");
         
         produtos.listar();
         

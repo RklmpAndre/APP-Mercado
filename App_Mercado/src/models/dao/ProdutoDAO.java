@@ -27,32 +27,27 @@ public class ProdutoDAO implements DAO {
     public boolean create(Object obj) {
         if(obj != null && obj instanceof Produto){
             Produto p = (Produto) obj;
-            for(Map.Entry<Integer, Produto> e : cadastroProduto.entrySet()){
-                System.out.println(e);
-                if(e.equals(p)){
-                    //
-                    System.out.println("e é igual a p");
-                    return false;
-                }
+            if(cadastroProduto.containsValue(p)){
+                return false;
+            }else{
+                int id = this.cadastroProduto.size() + 1;
+                p.setId(id);
+                cadastroProduto.put(p.getId(), p);
+                return true;
             }
-            int id = this.cadastroProduto.size() + 1;
-            p.setId(id);
-            this.cadastroProduto.put(p.getId(), p);
         }
         return false;
     }
 
     @Override
     public Object read(Object obj) {
-        if(obj != null && obj instanceof Produto){
-            Produto p = (Produto) obj;
-            if(this.cadastroProduto.get(p.getId()) != null){
-                return cadastroProduto.get(p.getId());
-            }
+        if(obj != null && obj instanceof Integer){
+            Integer i = (Integer) obj;
+            
+            return cadastroProduto.get(i);
         }
-
         return null;
-    }    
+    }
 
     @Override
     public boolean update(Object obj) {
