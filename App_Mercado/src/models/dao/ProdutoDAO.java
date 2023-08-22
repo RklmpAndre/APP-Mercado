@@ -17,24 +17,22 @@ public class ProdutoDAO implements DAO {
     HashMap<Integer, Produto> cadastroProduto = new HashMap<>();
     
     
-    /*public void listar() {
-        for (Map.Entry<String, Pessoa> linha : dados.entrySet()) {
-            System.out.println(linha);
-        }
-    }*/
-    
     @Override
     public boolean create(Object obj) {
         if(obj != null && obj instanceof Produto){
             Produto p = (Produto) obj;
-            if(cadastroProduto.containsValue(p)){
-                return false;
-            }else{
+            if(!cadastroProduto.containsValue(p)){
                 int id = this.cadastroProduto.size() + 1;
                 p.setId(id);
                 cadastroProduto.put(p.getId(), p);
-                return true;
-            }
+                return true; 
+            }else{
+                Produto p2 = cadastroProduto.get(p);
+                int qnt = p.getQuantidade() + p2.getQuantidade();
+                p2.setQuantidade(qnt);
+                cadastroProduto.replace(p.getId(), p2);
+                return false;
+            } 
         }
         return false;
     }
