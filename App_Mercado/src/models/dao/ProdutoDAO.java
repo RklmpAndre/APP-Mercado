@@ -5,7 +5,6 @@
 package models.dao;
 
 import java.util.HashMap;
-import java.util.Map;
 import models.beans.Produto;
 
 /**
@@ -21,18 +20,12 @@ public class ProdutoDAO implements DAO {
     public boolean create(Object obj) {
         if(obj != null && obj instanceof Produto){
             Produto p = (Produto) obj;
+            int id = this.cadastroProduto.size() + 1;
             if(!cadastroProduto.containsValue(p)){
-                int id = this.cadastroProduto.size() + 1;
                 p.setId(id);
                 cadastroProduto.put(p.getId(), p);
                 return true; 
-            }else{
-                Produto p2 = cadastroProduto.get(p);
-                int qnt = p.getQuantidade() + p2.getQuantidade();
-                p2.setQuantidade(qnt);
-                cadastroProduto.replace(p.getId(), p2);
-                return false;
-            } 
+            }
         }
         return false;
     }
@@ -40,38 +33,29 @@ public class ProdutoDAO implements DAO {
     @Override
     public Object read(Object obj) {
         if(obj != null && obj instanceof Integer){
-            Integer i = (Integer) obj;
-            
-            return cadastroProduto.get(i);
+            Integer id = (Integer) obj;
+            return cadastroProduto.get(id);
         }
         return null;
     }
-
+    
     @Override
-    public boolean update(Object obj) {
-        if(obj != null && obj instanceof Produto){
+    public boolean update(Object obj){
+        if (obj != null && obj instanceof Produto) {
             Produto p = (Produto) obj;
-            if(this.delete(p.getId()) == true){
-                return this.create(p);
-            }
-        }
-        return false; 
-    }
-
-    @Override
-    public boolean delete(Object obj) {
-        if(obj != null && obj instanceof Produto){
-            Produto p = (Produto) obj;
-            if(this.read(p) != null){
-                this.cadastroProduto.remove(p.getId());
-                return true;    
+            if(delete(p.getId()) == true){
+                return create(p);
             }
         }
         return false;
     }
-    public void listar() {
-        for(Map.Entry<Integer, Produto> l : cadastroProduto.entrySet()){
-            System.out.println(l);
+
+    @Override
+    public boolean delete(Object obj) {
+        if (obj != null && obj instanceof Integer) {
+            Integer id = (Integer) obj;
+            return(cadastroProduto.remove(id) !=null);
         }
-    }    
+        return false;
+    }
 }

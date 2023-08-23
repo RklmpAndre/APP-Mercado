@@ -19,7 +19,7 @@ public class TestaProduto {
         ProdutoDAO produtos = new ProdutoDAO();
         
         //Produtos
-        Produto p = new Produto(10, 10.90, "André", "Alimento", "Grandes Alimentos");
+        Produto p = new Produto(2, 10.90, "André", "Alimento", "Grandes Alimentos");
         Produto p1 = new Produto(5, 10.90, "André", "Alimento", "Grandes Alimentos");
         Produto p2 = new Produto(0, 10.90, "Daniel", "Alimento", "Grandes Alimentos");
         Produto p3 = new Produto(0, 10.90, "Daniel", "Alimento", "Grandes Alimentos");
@@ -29,7 +29,9 @@ public class TestaProduto {
         testaRetorno(produtos.create(p2), "CREATE");
         testaRetorno(produtos.create(p3), "CREATE");
         
-        produtos.listar();
+        System.out.println("---------------------------------------------------------");
+        
+        System.out.println(produtos.read(1));
         
     }
     
