@@ -4,7 +4,9 @@
  */
 package models.beans;
 
+import java.time.LocalDate;
 import java.util.*;
+import javax.swing.SpringLayout;
 import models.beans.Produto;
 /**
  *
@@ -12,24 +14,51 @@ import models.beans.Produto;
  */
 public class Carrinho {
     
+    private int id;
     private double valorTotal;
+    private ArrayList<Produto> produtosCarrinho = new ArrayList();
+    private LocalDate dataFinalizacao;
     private String tipoPagamento;
-    private boolean entrega = false;
-    private ArrayList<Produto> carrinho = new ArrayList();
-    
-    //ProdutoLista, ValorTotal, Entrega, TipoPagamento, ID, usuario
-    
-    public Carrinho(double valorTotal, String tipoPagamento) {
-        this.valorTotal = valorTotal;
-        this.tipoPagamento = tipoPagamento;
+
+    public Carrinho(String tipoPagamento) {
+        setTipoPagamento(tipoPagamento);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getValorTotal() {
         return valorTotal;
     }
 
-    public void setValorTotal(double valorTotal) {
-        this.valorTotal = valorTotal;
+    public void setValorTotal() {
+        double valor = 0.0;
+        for(Produto e : produtosCarrinho){
+            valor += e.getValor();
+            this.valorTotal = valor;
+        }
+    }
+
+    public ArrayList<Produto> getProdutosCarrinho() {
+        return produtosCarrinho;
+    }
+
+    public void setProdutosCarrinho(Produto p) {
+        this.produtosCarrinho.add(p);
+        setValorTotal();
+    }
+
+    public LocalDate getDataFinalizacao() {
+        return dataFinalizacao;
+    }
+
+    public void setDataCompra(LocalDate dataCompra) {
+        this.dataFinalizacao = dataCompra;
     }
 
     public String getTipoPagamento() {
@@ -39,74 +68,11 @@ public class Carrinho {
     public void setTipoPagamento(String tipoPagamento) {
         this.tipoPagamento = tipoPagamento;
     }
-
-    public boolean isEntrega() {
-        return entrega;
-    }
-
-    public void setEntrega(boolean entrega) {
-        this.entrega = entrega;
-    }
-
-    public ArrayList<Produto> getCarrinho() {
-        return carrinho;
-    }
-
-    public void setCarrinho(ArrayList<Produto> carrinho) {
-        this.carrinho = carrinho;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + (int) (Double.doubleToLongBits(this.valorTotal) ^ (Double.doubleToLongBits(this.valorTotal) >>> 32));
-        hash = 29 * hash + Objects.hashCode(this.tipoPagamento);
-        hash = 29 * hash + (this.entrega ? 1 : 0);
-        hash = 29 * hash + Objects.hashCode(this.carrinho);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Carrinho other = (Carrinho) obj;
-        if (Double.doubleToLongBits(this.valorTotal) != Double.doubleToLongBits(other.valorTotal)) {
-            return false;
-        }
-        if (this.entrega != other.entrega) {
-            return false;
-        }
-        if (!Objects.equals(this.tipoPagamento, other.tipoPagamento)) {
-            return false;
-        }
-        return Objects.equals(this.carrinho, other.carrinho);
-    }
     
-    public void addProduto(Produto p){
-         carrinho.add(p);
-    }
-    
-    public void removeProduto(Produto p){
-        carrinho.remove(p);
-    }
-    
-    public void listaProduto(){
-        for(int i = 0; i<carrinho.size(); i++){
-            System.out.println(carrinho.get(i));
-        }
-    }
-
     @Override
     public String toString() {
-        return "Carrinho{" + "valorTotal=" + valorTotal + ", tipoPagamento=" + tipoPagamento + ", entrega=" + entrega + ", carrinho=" + carrinho + '}';
-    }
+        
+        return "Carrinho: " + getDataFinalizacao() + "\nvalor total: " + getValorTotal() + "\nTipo de pagamento: " + getTipoPagamento() + "\nProdutos: " + getProdutosCarrinho();
     
+    }
 }

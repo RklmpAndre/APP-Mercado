@@ -18,15 +18,17 @@ public class TestaCarrinho {
     public static void main(String[] args) {
         //ArrayList<Produto> carrinho = new ArrayList();
         
-        Carrinho c = new Carrinho(100.2, "pixis");
-        Produto caixa = new Produto(1, 54, 54.6,"Flanelinha","Pano de limepeza", "limpa carros");
-        Produto pano = new Produto(4, 26, 98.6,"papelão","para armazenamento", "forma de caixa");
+        Produto p = new Produto(10, 10.90, "Andre", "Alimento", "Grande Alimento");
+        Produto p2 = new Produto(5, 11.90, "Arthur", "Alimento", "Grande Alimento");
         
-        c.addProduto(pano);
-        c.addProduto(pano); 
+        Carrinho carrinho = new Carrinho("Alucard");
         
-        c.listaProduto();
+        carrinho.setProdutosCarrinho(p);
+        carrinho.setProdutosCarrinho(p2);
         
+        System.out.println(carrinho.getValorTotal());
+        
+        System.out.println(carrinho.toString());
     }
     
 }

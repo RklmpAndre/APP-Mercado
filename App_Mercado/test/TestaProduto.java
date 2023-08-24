@@ -33,6 +33,19 @@ public class TestaProduto {
         
         System.out.println(produtos.read(1));
         
+        System.out.println("---------------------------------------------------------");
+        
+        p2.setId(1);
+        
+        testaRetorno(produtos.update(p2), "UPDATE");
+        
+        System.out.println(produtos.read(1));
+        
+        System.out.println("---------------------------------------------------------");
+        
+        testaRetorno(produtos.delete(1), "DELETE");
+        
+        System.out.println(produtos.read(1));
     }
     
     public static void testaRetorno(boolean b, String operacao) {

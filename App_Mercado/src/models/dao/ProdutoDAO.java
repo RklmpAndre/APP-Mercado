@@ -44,7 +44,8 @@ public class ProdutoDAO implements DAO {
         if (obj != null && obj instanceof Produto) {
             Produto p = (Produto) obj;
             if(delete(p.getId()) == true){
-                return create(p);
+                cadastroProduto.put(p.getId(), p);
+                return true;
             }
         }
         return false;

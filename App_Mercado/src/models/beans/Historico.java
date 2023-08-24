@@ -12,13 +12,11 @@ import java.time.LocalDate;
  */
 public class Historico {
     //private Lista de carrinho;
+    
     private LocalDate data;
     private int id;
     
-    public Historico(LocalDate data, int id) {
-        this.data = data;
-        this.id = id;
-    }
+    
 
     public LocalDate getData() {
         return data;
