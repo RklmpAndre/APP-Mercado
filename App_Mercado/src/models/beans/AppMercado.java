@@ -12,7 +12,7 @@ import view.*;
  */
 public class AppMercado {
     public static void main(String[] args) {
-        TelaCadastroUsuario cadastroUsuario = new TelaCadastroUsuario();
-        cadastroUsuario.setVisible(true);
+        TelaInicio inicio = new TelaInicio();
+        inicio.setVisible(true);
     }
 }

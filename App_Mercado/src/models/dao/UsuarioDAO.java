@@ -5,6 +5,7 @@
 package models.dao;
 
 import java.util.HashMap;
+import java.util.Objects;
 import models.beans.Usuario;
 
 /**
@@ -12,15 +13,33 @@ import models.beans.Usuario;
  * @author andre
  */
 public class UsuarioDAO implements DAO {
+    
+    //Implementação do padrão singleton
+    //Esse padrão agrante que a classe não terá mais de uma instância
+    private static UsuarioDAO udao;
+    
+    public static UsuarioDAO getInstance() {
+        if (udao == null) {
+            udao = new UsuarioDAO();
+        }
+        return udao;   
+    }
+    
+     //É private para evitar que o PessoaDAO seja criado de outra forma que
+    // não seja através do método getInstance.
+    private UsuarioDAO(){
+        
+    }
 
-    private HashMap<String, Usuario> cadastraUsuario = new HashMap();
+    private HashMap<String, Usuario> dados = new HashMap();
 
     @Override
     public boolean create(Object obj) {
-        if (obj != null && obj instanceof Usuario) {
+        Objects.requireNonNull(obj);
+        if (obj instanceof Usuario) {
             Usuario u = (Usuario) obj;
-            if (!cadastraUsuario.containsKey(u.getCpf())){
-                cadastraUsuario.put(u.getCpf(), u);
+            if (!dados.containsKey(u.getCpf())){
+                dados.put(u.getCpf(), u);
                 return true;
             }else return false;
         }
@@ -29,9 +48,10 @@ public class UsuarioDAO implements DAO {
 
     @Override
     public Object read(Object obj) {
-        if (obj != null && obj instanceof String) {
+        Objects.requireNonNull(obj);
+        if (obj instanceof String) {
             String cpf = (String) obj;
-            return cadastraUsuario.get(cpf);
+            return dados.get(cpf);
         }
         return null;
     }

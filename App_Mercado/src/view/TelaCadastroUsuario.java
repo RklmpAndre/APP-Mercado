@@ -15,7 +15,7 @@ import models.dao.UsuarioDAO;
  */
 public class TelaCadastroUsuario extends javax.swing.JFrame {
 
-    UsuarioDAO usuarioLista = new UsuarioDAO();
+    private UsuarioDAO usuarioLista = UsuarioDAO.getInstance();
 
     public TelaCadastroUsuario() {
         initComponents();
@@ -31,13 +31,12 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jComboBox1 = new javax.swing.JComboBox<>();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jPanel1 = new javax.swing.JPanel();
         nomeLabel = new javax.swing.JLabel();
         nomeTextField = new javax.swing.JTextField();
         cpfLabel = new javax.swing.JLabel();
-        cpfTextField = new javax.swing.JFormattedTextField();
         dataNascLabel = new javax.swing.JLabel();
-        dataNasciTextField = new javax.swing.JTextField();
         emailLabel = new javax.swing.JLabel();
         emailTextField = new javax.swing.JTextField();
         senhaLabel = new javax.swing.JLabel();
@@ -45,9 +44,13 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         confirmarSenhaLabel = new javax.swing.JLabel();
         confirmarSenhaTextField = new javax.swing.JPasswordField();
         btnCadastro = new javax.swing.JButton();
+        cpfTextField = new javax.swing.JFormattedTextField();
+        dataNasciTextField = new javax.swing.JFormattedTextField();
         logoIFRSTORE = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jFormattedTextField1.setText("jFormattedTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -64,20 +67,8 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         cpfLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         cpfLabel.setText("CPF");
 
-        cpfTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cpfTextFieldActionPerformed(evt);
-            }
-        });
-
         dataNascLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         dataNascLabel.setText("Data de Nascimento");
-
-        dataNasciTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dataNasciTextFieldActionPerformed(evt);
-            }
-        });
 
         emailLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         emailLabel.setText("Email");
@@ -108,6 +99,8 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
             }
         });
 
+        dataNasciTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -121,19 +114,19 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(nomeLabel)
-                            .addComponent(nomeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
                             .addComponent(dataNascLabel)
-                            .addComponent(dataNasciTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
                             .addComponent(senhaLabel)
-                            .addComponent(senhaTextField))
-                        .addGap(50, 50, 50)
+                            .addComponent(senhaTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                            .addComponent(nomeTextField)
+                            .addComponent(dataNasciTextField))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(confirmarSenhaLabel)
                             .addComponent(emailLabel)
                             .addComponent(emailTextField)
                             .addComponent(cpfLabel)
-                            .addComponent(cpfTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(confirmarSenhaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(confirmarSenhaTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                            .addComponent(cpfTextField))
                         .addGap(40, 40, 40))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -144,21 +137,20 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(nomeLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(cpfLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cpfTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cpfTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(dataNascLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(dataNasciTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dataNascLabel)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(emailLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dataNasciTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(confirmarSenhaLabel)
@@ -194,7 +186,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                 .addComponent(logoIFRSTORE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -204,10 +196,6 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
     private void nomeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeTextFieldActionPerformed
-
-    private void dataNasciTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataNasciTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dataNasciTextFieldActionPerformed
 
     private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
         // TODO add your handling code here:
@@ -226,10 +214,6 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "CRIADO");
         }else JOptionPane.showMessageDialog(null, "NAO CRIADO");
     }//GEN-LAST:event_btnCadastroActionPerformed
-
-    private void cpfTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cpfTextFieldActionPerformed
 
     private void senhaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaTextFieldActionPerformed
         // TODO add your handling code here:
@@ -277,10 +261,11 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel cpfLabel;
     private javax.swing.JFormattedTextField cpfTextField;
     private javax.swing.JLabel dataNascLabel;
-    private javax.swing.JTextField dataNasciTextField;
+    private javax.swing.JFormattedTextField dataNasciTextField;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField emailTextField;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel logoIFRSTORE;
     private javax.swing.JLabel nomeLabel;
