@@ -4,20 +4,36 @@
  */
 package models.dao;
 
+import java.util.HashMap;
+import models.beans.Usuario;
+
 /**
  *
  * @author andre
  */
-public class UsuarioDAO implements DAO{
+public class UsuarioDAO implements DAO {
+
+    private HashMap<String, Usuario> cadastraUsuario = new HashMap();
 
     @Override
     public boolean create(Object obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (obj != null && obj instanceof Usuario) {
+            Usuario u = (Usuario) obj;
+            if (!cadastraUsuario.containsKey(u.getCpf())){
+                cadastraUsuario.put(u.getCpf(), u);
+                return true;
+            }else return false;
+        }
+        return false;
     }
 
     @Override
     public Object read(Object obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (obj != null && obj instanceof String) {
+            String cpf = (String) obj;
+            return cadastraUsuario.get(cpf);
+        }
+        return null;
     }
 
     @Override
@@ -29,5 +45,5 @@ public class UsuarioDAO implements DAO{
     public boolean delete(Object obj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

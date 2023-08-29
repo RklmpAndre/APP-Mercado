@@ -24,7 +24,7 @@ public class ProdutoDAO implements DAO {
             if(!cadastroProduto.containsValue(p)){
                 p.setId(id);
                 cadastroProduto.put(p.getId(), p);
-                return true; 
+                return true;
             }
         }
         return false;

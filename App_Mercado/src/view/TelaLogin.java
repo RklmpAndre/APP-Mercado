@@ -32,8 +32,8 @@ public class TelaLogin extends javax.swing.JFrame {
         loginLabel = new javax.swing.JLabel();
         loginTextArea = new javax.swing.JTextField();
         senhaLabel = new javax.swing.JLabel();
-        senhaTextArea = new javax.swing.JTextField();
         entrarButton = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
 
         jLabel3.setText("jLabel3");
@@ -54,14 +54,14 @@ public class TelaLogin extends javax.swing.JFrame {
         senhaLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         senhaLabel.setText("Senha");
 
-        senhaTextArea.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                senhaTextAreaActionPerformed(evt);
-            }
-        });
-
         entrarButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         entrarButton.setText("Entrar");
+
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelLoginLayout = new javax.swing.GroupLayout(painelLogin);
         painelLogin.setLayout(painelLoginLayout);
@@ -69,13 +69,12 @@ public class TelaLogin extends javax.swing.JFrame {
             painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelLoginLayout.createSequentialGroup()
                 .addGap(106, 106, 106)
-                .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(entrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(senhaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(loginLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(senhaTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
-                        .addComponent(loginTextArea)))
+                    .addComponent(senhaLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loginLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loginTextArea, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
         painelLoginLayout.setVerticalGroup(
@@ -88,7 +87,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addComponent(senhaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(senhaTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(entrarButton)
                 .addContainerGap(24, Short.MAX_VALUE))
@@ -124,9 +123,9 @@ public class TelaLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_loginTextAreaActionPerformed
 
-    private void senhaTextAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaTextAreaActionPerformed
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_senhaTextAreaActionPerformed
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,11 +166,11 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JButton entrarButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel loginLabel;
     private javax.swing.JTextField loginTextArea;
     private javax.swing.JPanel painelLogin;
     private javax.swing.JLabel senhaLabel;
-    private javax.swing.JTextField senhaTextArea;
     // End of variables declaration//GEN-END:variables
 }

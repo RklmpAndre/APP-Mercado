@@ -62,14 +62,12 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="entrarButton" min="-2" pref="104" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="senhaLabel" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
-                          <Component id="loginLabel" min="-2" pref="52" max="-2" attributes="0"/>
-                          <Component id="senhaTextArea" alignment="0" pref="322" max="32767" attributes="0"/>
-                          <Component id="loginTextArea" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="senhaLabel" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
+                      <Component id="loginLabel" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
+                      <Component id="loginTextArea" alignment="0" pref="322" max="32767" attributes="0"/>
+                      <Component id="jPasswordField1" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="92" max="32767" attributes="0"/>
               </Group>
@@ -85,7 +83,7 @@
                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="senhaLabel" min="-2" pref="27" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="senhaTextArea" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPasswordField1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="entrarButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="24" max="32767" attributes="0"/>
@@ -115,11 +113,6 @@
             <Property name="text" type="java.lang.String" value="Senha"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="senhaTextArea">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="senhaTextAreaActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="entrarButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -127,6 +120,11 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Entrar"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordField1ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
