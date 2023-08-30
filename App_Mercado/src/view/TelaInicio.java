@@ -101,13 +101,13 @@ public class TelaInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
-        new TelaLogin().setVisible(true);
         this.setVisible(false);
+        new TelaLogin().setVisible(true);
     }//GEN-LAST:event_EntrarActionPerformed
 
     private void CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarActionPerformed
-        new TelaCadastroUsuario().setVisible(true);
         this.setVisible(false);
+        new TelaCadastroUsuario().setVisible(true);
     }//GEN-LAST:event_CadastrarActionPerformed
 
     /**
