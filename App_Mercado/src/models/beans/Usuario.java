@@ -4,11 +4,9 @@
  */
 package models.beans;
 
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
-
 
 /**
  *
@@ -18,9 +16,9 @@ public class Usuario {
 
     private String nome, cpf, email, senha;
     private LocalDate dataNascimento;
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     
-
-    public Usuario(String nome, String cpf, String dataNascimento, String email, String senha) {
+    public Usuario(String nome, String cpf, LocalDate dataNascimento, String email, String senha) {
         setNome(nome);
         setCpf(cpf);
         setDataNascimento(dataNascimento);
@@ -32,9 +30,8 @@ public class Usuario {
     }
 
     public void setNome(String nome) {
-        if(Objects.requireNonNull(nome) != null){
-            this.nome = nome;
-        }else System.out.println("Nome não pode ser nulo");
+        Objects.requireNonNull(nome);
+        this.nome = nome;
     }
 
     public String getCpf() {
@@ -42,9 +39,8 @@ public class Usuario {
     }
 
     public void setCpf(String cpf) {
-        if(Objects.requireNonNull(cpf) != null){
-            this.cpf = cpf;
-        }else System.out.println("CPF não pode ser nulo");
+        Objects.requireNonNull(cpf);
+        this.cpf = cpf;
 
     }
 
@@ -52,11 +48,13 @@ public class Usuario {
         return dataNascimento;
     }
 
-    public void setDataNascimento(String dataNascimento) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
-        LocalDate dt1 = LocalDate.parse(dataNascimento, formatter);
-        this.dataNascimento = dt1;
-        
+    public String getDataNascimentoString() {
+        return dataNascimento.format(formatter);
+    }
+
+    public void setDataNascimento(LocalDate data) {
+        Objects.requireNonNull(data, "A data não pode ser nula");
+        this.dataNascimento = data;
     }
 
     public String getEmail() {
@@ -64,9 +62,8 @@ public class Usuario {
     }
 
     public void setEmail(String email) {
-        if(Objects.requireNonNull(email) != null){
-            this.email = email;
-        }else System.out.println("Email não pode ser nulo");
+        Objects.requireNonNull(email);
+        this.email = email;
     }
 
     public String getSenha() {
@@ -74,14 +71,10 @@ public class Usuario {
     }
 
     public void setSenha(String senha) {
-        if(Objects.requireNonNull(senha) != null){
-            if(senha.length() < 8){
-                System.out.println("Senha muito curta");
-            }else this.senha = senha;
-        }else System.out.println("Senha não pode ser nula");
-
+        Objects.requireNonNull(senha);
+        this.senha = senha;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 7;

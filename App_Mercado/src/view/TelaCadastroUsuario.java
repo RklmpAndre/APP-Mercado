@@ -8,10 +8,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 import models.beans.Usuario;
 import models.dao.UsuarioDAO;
 import util.ValidaCPF;
-import view.TelaInicio;
 
 /**
  *
@@ -42,9 +42,21 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         nomeLabel = new javax.swing.JLabel();
         nomeCampo = new javax.swing.JTextField();
         cpfLabel = new javax.swing.JLabel();
-        cpfCampo = new javax.swing.JFormattedTextField();
+        MaskFormatter CpfMask = null;
+        try{
+            CpfMask= new MaskFormatter("###.###.###-##");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        cpfCampo = new javax.swing.JFormattedTextField(CpfMask);
         dataNascLabel = new javax.swing.JLabel();
-        dataCampo = new javax.swing.JTextField();
+        MaskFormatter dataMask = null;
+        try{
+            dataMask= new MaskFormatter("##/##/####");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        dataCampo = new javax.swing.JFormattedTextField(dataMask);
         emailLabel = new javax.swing.JLabel();
         emailCampo = new javax.swing.JTextField();
         senhaLabel = new javax.swing.JLabel();
@@ -81,12 +93,6 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
 
         dataNascLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         dataNascLabel.setText("Data de Nascimento");
-
-        dataCampo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dataCampoActionPerformed(evt);
-            }
-        });
 
         emailLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         emailLabel.setText("Email");
@@ -127,9 +133,9 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                     .addComponent(nomeLabel)
                     .addComponent(nomeCampo, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
                     .addComponent(dataNascLabel)
-                    .addComponent(dataCampo, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
                     .addComponent(senhaLabel)
-                    .addComponent(senhaCampo))
+                    .addComponent(senhaCampo)
+                    .addComponent(dataCampo))
                 .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(confirmarSenhaLabel)
@@ -197,7 +203,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(voltarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
                 .addComponent(logoIFRSTORE)
                 .addGap(300, 300, 300))
         );
@@ -241,31 +247,34 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeCampoActionPerformed
 
-    private void dataCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataCampoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dataCampoActionPerformed
-
     private void emailCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailCampoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailCampoActionPerformed
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
         boolean status = true;
-
-        String cpf = cpfCampo.getText();
         
-        if (!ValidaCPF.isValido(cpf)) {
-            JOptionPane.showMessageDialog(null, "CPF inválido !");
-            cpfCampo.grabFocus();
-            status = false;
-        }
-
         String nome = nomeCampo.getText();
         if (nome.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Erro ao informar nome");
             nomeCampo.grabFocus();
             status = false;
         }
+        
+        String cpf = cpfCampo.getText();
+        if (!ValidaCPF.isValido(cpf)) {
+            JOptionPane.showMessageDialog(null, "CPF inválido !");
+            status = false;
+        }
+        
+        String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        String email = emailCampo.getText();
+        if (!email.matches(EMAIL_PATTERN)) {
+            JOptionPane.showMessageDialog(null, "Endereço de email errado !");
+            status = false;
+        }
+        
 
         String data = dataCampo.getText();
         LocalDate dataAniversario = null;
@@ -282,23 +291,32 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Erro ao informar a data de aniversario");
             status = false;
         }
-
-        if (status) {
-            usuario = new Usuario(nome, cpf, data, data, data);
-            if (uDAO.inserir(pessoa)) {
-                JOptionPane.showMessageDialog(this, "Pessoa cadastrada com sucesso !");
-            }
+        
+        String senha = senhaCampo.getText();
+        if (senha.isEmpty() || senha.length()<8){
+            JOptionPane.showMessageDialog(this, "A senha deve ter pelo menos 8 digitos");
+            senhaCampo.grabFocus();
+            status = false;
         }
         
-        usuario.setNome(nomeCampo.getText());
-        usuario.setCpf(cpfCampo.getText());
-        usuario.setDataNascimento(dataCampo.getText());
-        usuario.setEmail(emailCampo.getText());
-        usuario.setSenha(senhaCampo.getText());
-        
-        if(usuarioLista.create(usuario)){
-            JOptionPane.showMessageDialog(null, "CRIADO");
-        }else JOptionPane.showMessageDialog(null, "NAO CRIADO");
+        String senha2 = confirmarSenhaCampo.getText();
+        if (!senha.equals(senha2)){
+            JOptionPane.showMessageDialog(this, "As senhas não conferem");
+            confirmarSenhaCampo.grabFocus();
+            status = false;
+        }
+
+        if (status) {
+            usuario = new Usuario(nome, cpf, dataAniversario, email, senha);
+            
+            if (uDAO.create(usuario)) {
+                JOptionPane.showMessageDialog(this, "Usuario cadastrado com sucesso!");
+                new TelaPrincipal().setVisible(true);
+                this.setVisible(false);
+            }else{
+                JOptionPane.showMessageDialog(null, "CPF já cadastrado");
+            }
+        }
     }//GEN-LAST:event_btnCadastroActionPerformed
 
     private void cpfCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfCampoActionPerformed
@@ -355,7 +373,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel confirmarSenhaLabel;
     private javax.swing.JFormattedTextField cpfCampo;
     private javax.swing.JLabel cpfLabel;
-    private javax.swing.JTextField dataCampo;
+    private javax.swing.JFormattedTextField dataCampo;
     private javax.swing.JLabel dataNascLabel;
     private javax.swing.JTextField emailCampo;
     private javax.swing.JLabel emailLabel;

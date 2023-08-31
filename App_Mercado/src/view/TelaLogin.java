@@ -15,12 +15,14 @@ import view.TelaInicio;
  */
 public class TelaLogin extends javax.swing.JFrame {
 
-    UsuarioDAO usuarioLista = UsuarioDAO.getInstance();
+    UsuarioDAO uDAO;
+    Usuario usuario;
 
     /**
      * Creates new form TelaLogin
      */
     public TelaLogin() {
+        uDAO = UsuarioDAO.getInstance();
         initComponents();
     }
 
@@ -178,11 +180,11 @@ public class TelaLogin extends javax.swing.JFrame {
         String login = loginCampo.getText();
         String senha = senhaCampo.getText();
         
-        Usuario user = (Usuario) usuarioLista.read(login);
+        usuario = (Usuario) uDAO.read(login);
         
-        if(user.getCpf().equals(login) && user.getSenha().equals(senha)){
-            this.setVisible(false);
+        if(usuario.getCpf().equals(login) && usuario.getSenha().equals(senha)){
             new TelaPrincipal().setVisible(true);
+            this.setVisible(false);
         }else{
             JOptionPane.showMessageDialog(null, "Usuario não encontrado");
         }

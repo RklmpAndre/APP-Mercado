@@ -26,12 +26,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollBar1 = new javax.swing.JScrollBar();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        carrinhoMenu = new javax.swing.JMenuItem();
+        historicoMenu = new javax.swing.JMenuItem();
+        enderecoMenu = new javax.swing.JMenuItem();
+        sairMenu = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -40,22 +41,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("Perfil");
 
-        jMenuItem1.setText("Carrinho");
-        jMenu2.add(jMenuItem1);
+        carrinhoMenu.setText("Carrinho");
+        jMenu2.add(carrinhoMenu);
 
-        jMenuItem5.setText("Historico de Compras");
-        jMenu2.add(jMenuItem5);
+        historicoMenu.setText("Historico de Compras");
+        jMenu2.add(historicoMenu);
 
-        jMenuItem6.setText("Endereço");
-        jMenu2.add(jMenuItem6);
+        enderecoMenu.setText("Endereço");
+        jMenu2.add(enderecoMenu);
 
-        jMenuItem4.setText("Sair");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        sairMenu.setText("Sair");
+        sairMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                sairMenuActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem4);
+        jMenu2.add(sairMenu);
 
         jMenuBar1.add(jMenu2);
 
@@ -68,20 +69,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 980, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 970, Short.MAX_VALUE)
+                .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 528, Short.MAX_VALUE)
+            .addComponent(jScrollBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    private void sairMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairMenuActionPerformed
+        new TelaInicio().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_sairMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,12 +124,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem carrinhoMenu;
+    private javax.swing.JMenuItem enderecoMenu;
+    private javax.swing.JMenuItem historicoMenu;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JMenuItem sairMenu;
     // End of variables declaration//GEN-END:variables
 }

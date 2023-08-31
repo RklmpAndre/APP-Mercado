@@ -75,9 +75,9 @@
                       <Component id="nomeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="nomeCampo" alignment="0" pref="360" max="32767" attributes="0"/>
                       <Component id="dataNascLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="dataCampo" alignment="0" pref="360" max="32767" attributes="0"/>
                       <Component id="senhaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="senhaCampo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="dataCampo" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -169,6 +169,10 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cpfCampoActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(CpfMask);"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="MaskFormatter CpfMask = null;&#xa;try{&#xa;CpfMask= new MaskFormatter(&quot;###.###.###-##&quot;);&#xa;} catch (Exception e){&#xa;e.printStackTrace();&#xa;}"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="dataNascLabel">
           <Properties>
@@ -178,10 +182,11 @@
             <Property name="text" type="java.lang.String" value="Data de Nascimento"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="dataCampo">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dataCampoActionPerformed"/>
-          </Events>
+        <Component class="javax.swing.JFormattedTextField" name="dataCampo">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(dataMask);"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="MaskFormatter dataMask = null;&#xa;        try{&#xa;            dataMask= new MaskFormatter(&quot;##/##/####&quot;);&#xa;        } catch (Exception e){&#xa;            e.printStackTrace();&#xa;        }"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="emailLabel">
           <Properties>
@@ -240,7 +245,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="voltarButton" min="-2" pref="92" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="168" max="32767" attributes="0"/>
                   <Component id="logoIFRSTORE" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="300" max="-2" attributes="0"/>
               </Group>
