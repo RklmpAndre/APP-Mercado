@@ -26,7 +26,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollBar1 = new javax.swing.JScrollBar();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         carrinhoMenu = new javax.swing.JMenuItem();
@@ -42,9 +41,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2.setText("Perfil");
 
         carrinhoMenu.setText("Carrinho");
+        carrinhoMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                carrinhoMenuActionPerformed(evt);
+            }
+        });
         jMenu2.add(carrinhoMenu);
 
         historicoMenu.setText("Historico de Compras");
+        historicoMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historicoMenuActionPerformed(evt);
+            }
+        });
         jMenu2.add(historicoMenu);
 
         enderecoMenu.setText("Endereço");
@@ -69,13 +78,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 970, Short.MAX_VALUE)
-                .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 980, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+            .addGap(0, 528, Short.MAX_VALUE)
         );
 
         pack();
@@ -86,6 +93,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         new TelaInicio().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_sairMenuActionPerformed
+
+    private void historicoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoMenuActionPerformed
+        new TelaHistoricoCompras().setVisible(true);
+    }//GEN-LAST:event_historicoMenuActionPerformed
+
+    private void carrinhoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carrinhoMenuActionPerformed
+        new TelaCarrinho().setVisible(true);
+        
+    }//GEN-LAST:event_carrinhoMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,7 +146,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JMenuItem sairMenu;
     // End of variables declaration//GEN-END:variables
 }

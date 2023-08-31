@@ -37,6 +37,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
         painelHead = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         voltarButton = new javax.swing.JButton();
@@ -48,6 +49,19 @@ public class TelaLogin extends javax.swing.JFrame {
         entrarButton1 = new javax.swing.JButton();
 
         jLabel3.setText("jLabel3");
+
+        jInternalFrame1.setVisible(true);
+
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("IFStore Login");
@@ -188,6 +202,9 @@ public class TelaLogin extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Usuario não encontrado");
         }
+        
+        
+        
     }//GEN-LAST:event_entrarButton1ActionPerformed
 
     /**
@@ -227,6 +244,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton entrarButton1;
+    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;

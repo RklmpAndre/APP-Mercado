@@ -23,6 +23,7 @@ public class Usuario {
         setCpf(cpf);
         setDataNascimento(dataNascimento);
         setEmail(email);
+        setSenha(senha);
     }
 
     public String getNome() {
