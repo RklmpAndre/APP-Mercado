@@ -57,7 +57,8 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
         setResizable(false);
 
         nomeLabel.setText("Nome");
@@ -155,11 +156,11 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Tipo", "Quantidade", "Valor", "Descrição"
+                "ID", "Nome", "Tipo", "Quantidade", "Valor", "Descrição"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -174,6 +175,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             produtosTable.getColumnModel().getColumn(2).setResizable(false);
             produtosTable.getColumnModel().getColumn(3).setResizable(false);
             produtosTable.getColumnModel().getColumn(4).setResizable(false);
+            produtosTable.getColumnModel().getColumn(5).setResizable(false);
         }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -202,8 +204,6 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         boolean status = true;
         DefaultTableModel dtmProdutos = (DefaultTableModel) produtosTable.getModel();
-        
-        
         
         String nome = nomeCampo.getText();
         if (nome.isEmpty()) {
@@ -244,7 +244,9 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
        
         if (status) {
             produto = new Produto(qntd, valor, nome, tipo, desc);
-            Object[] dados = {nomeCampo.getText(), tipoCampo.getText(), desctTextArea.getText(), qntdCampo.getText(), valorCampo.getText()};
+            Produto p = produto;
+            prDAO.create(produto);
+            Object[] dados = {prDAO.read(p.getId())};
             
             if (prDAO.create(produto)) {
                 dtmProdutos.addRow(dados);

@@ -52,9 +52,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pixRadioBtn = new javax.swing.JRadioButton();
         finalizarButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        historicoMenu = new javax.swing.JMenu();
-        enderecosMenu = new javax.swing.JMenu();
-        sairMenu = new javax.swing.JMenu();
+        perfilMenu = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        administradorMenu = new javax.swing.JMenu();
+        abaProdutoMenu = new javax.swing.JMenuItem();
+        abaUsuarioMenu = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("IFRSTORE Supermercados");
@@ -163,7 +168,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(adicionarButton)
                             .addComponent(removerButton)
                             .addComponent(valorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         finalizacaoPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -247,14 +252,61 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(45, 45, 45))
         );
 
-        historicoMenu.setText("Historico de Compras");
-        jMenuBar1.add(historicoMenu);
+        perfilMenu.setText("Perfil");
 
-        enderecosMenu.setText("Endereços");
-        jMenuBar1.add(enderecosMenu);
+        jMenuItem1.setText("Historico de Compras");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        perfilMenu.add(jMenuItem1);
 
-        sairMenu.setText("Sair");
-        jMenuBar1.add(sairMenu);
+        jMenuItem2.setText("Endereços");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        perfilMenu.add(jMenuItem2);
+
+        jMenuItem3.setText("Sair");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        perfilMenu.add(jMenuItem3);
+
+        jMenuBar1.add(perfilMenu);
+
+        administradorMenu.setText("Administrador");
+
+        abaProdutoMenu.setText("Adicionar ou remover produtos");
+        abaProdutoMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abaProdutoMenuActionPerformed(evt);
+            }
+        });
+        administradorMenu.add(abaProdutoMenu);
+
+        abaUsuarioMenu.setText("Adicionar ou remover usuarios");
+        abaUsuarioMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abaUsuarioMenuActionPerformed(evt);
+            }
+        });
+        administradorMenu.add(abaUsuarioMenu);
+
+        jMenuItem4.setText("Sair");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        administradorMenu.add(jMenuItem4);
+
+        jMenuBar1.add(administradorMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -290,11 +342,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
         produtosCamboBox.removeAllItems();
         
         
-        for (Produto produto : prDAO.listar().) {
-            comboBoxProdutos.addItem(produto.getNome());
-        }
+        
                 
     }//GEN-LAST:event_produtosCamboBoxActionPerformed
+
+    private void abaProdutoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abaProdutoMenuActionPerformed
+        new TelaCadastroProduto().setVisible(true);
+    }//GEN-LAST:event_abaProdutoMenuActionPerformed
+
+    private void abaUsuarioMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abaUsuarioMenuActionPerformed
+        new TelaEnderecos().setVisible(true);
+    }//GEN-LAST:event_abaUsuarioMenuActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        new TelaHistoricoCompras().setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        new TelaEnderecos().setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        new TelaInicio().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        new TelaInicio().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,20 +415,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem abaProdutoMenu;
+    private javax.swing.JMenuItem abaUsuarioMenu;
     private javax.swing.JButton adicionarButton;
+    private javax.swing.JMenu administradorMenu;
     private javax.swing.JTable carrinho;
     private javax.swing.JPanel conteudoPanel;
     private javax.swing.JRadioButton creditoRadioBtn;
     private javax.swing.JRadioButton debitoRadioBtn;
     private javax.swing.JComboBox<String> enderecos;
     private javax.swing.JLabel enderecosLabel;
-    private javax.swing.JMenu enderecosMenu;
     private javax.swing.JPanel finalizacaoPanel;
     private javax.swing.JButton finalizarButton;
-    private javax.swing.JMenu historicoMenu;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel pagamentoLabel;
+    private javax.swing.JMenu perfilMenu;
     private javax.swing.JRadioButton pixRadioBtn;
     private javax.swing.JLabel produtoLabel;
     private javax.swing.JComboBox<String> produtosCamboBox;
@@ -360,7 +442,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel qntLabel;
     private javax.swing.JFormattedTextField qntTextField;
     private javax.swing.JButton removerButton;
-    private javax.swing.JMenu sairMenu;
     private javax.swing.JLabel valorLabel;
     private javax.swing.JTextField valorTextField;
     // End of variables declaration//GEN-END:variables
