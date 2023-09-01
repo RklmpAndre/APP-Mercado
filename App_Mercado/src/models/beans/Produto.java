@@ -27,8 +27,6 @@ public class Produto {
         setDescricao(descricao);
     }
 
-    
-
     public int getQuantidade() {
         return qntd;
     }

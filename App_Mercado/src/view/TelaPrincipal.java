@@ -4,16 +4,21 @@
  */
 package view;
 
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+import models.beans.Produto;
+import models.dao.ProdutoDAO;
+
 /**
  *
  * @author andre
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaLoja
-     */
+    ProdutoDAO prDAO;
+    
     public TelaPrincipal() {
+        prDAO = ProdutoDAO.getInstance();
         initComponents();
     }
 
@@ -26,51 +31,230 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        carrinho = new javax.swing.JTable();
+        conteudoPanel = new javax.swing.JPanel();
+        produtosPanel = new javax.swing.JPanel();
+        produtoLabel = new javax.swing.JLabel();
+        produtosCamboBox = new javax.swing.JComboBox<>();
+        qntLabel = new javax.swing.JLabel();
+        qntTextField = new javax.swing.JFormattedTextField();
+        adicionarButton = new javax.swing.JButton();
+        removerButton = new javax.swing.JButton();
+        valorLabel = new javax.swing.JLabel();
+        valorTextField = new javax.swing.JTextField();
+        finalizacaoPanel = new javax.swing.JPanel();
+        enderecosLabel = new javax.swing.JLabel();
+        enderecos = new javax.swing.JComboBox<>();
+        pagamentoLabel = new javax.swing.JLabel();
+        creditoRadioBtn = new javax.swing.JRadioButton();
+        debitoRadioBtn = new javax.swing.JRadioButton();
+        pixRadioBtn = new javax.swing.JRadioButton();
+        finalizarButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        carrinhoMenu = new javax.swing.JMenuItem();
-        historicoMenu = new javax.swing.JMenuItem();
-        enderecoMenu = new javax.swing.JMenuItem();
-        sairMenu = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        historicoMenu = new javax.swing.JMenu();
+        enderecosMenu = new javax.swing.JMenu();
+        sairMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("IFRSTORE Supermercados");
         setResizable(false);
 
-        jMenu2.setText("Perfil");
+        carrinho.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        carrinhoMenu.setText("Carrinho");
-        carrinhoMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                carrinhoMenuActionPerformed(evt);
+            },
+            new String [] {
+                "Produto", "Quantidade", "Valor"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        jMenu2.add(carrinhoMenu);
+        carrinho.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(carrinho);
+        if (carrinho.getColumnModel().getColumnCount() > 0) {
+            carrinho.getColumnModel().getColumn(0).setResizable(false);
+            carrinho.getColumnModel().getColumn(1).setResizable(false);
+            carrinho.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        conteudoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        produtosPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        produtoLabel.setText("Produto");
+
+        produtosCamboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        produtosCamboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                produtosCamboBoxActionPerformed(evt);
+            }
+        });
+
+        qntLabel.setText("Quantidade");
+
+        qntTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        adicionarButton.setText("Adicionar no Carrinho");
+        adicionarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adicionarButtonActionPerformed(evt);
+            }
+        });
+
+        removerButton.setText("Remover do Carrinho");
+        removerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerButtonActionPerformed(evt);
+            }
+        });
+
+        valorLabel.setText("Valor total");
+
+        valorTextField.setEditable(false);
+
+        javax.swing.GroupLayout produtosPanelLayout = new javax.swing.GroupLayout(produtosPanel);
+        produtosPanel.setLayout(produtosPanelLayout);
+        produtosPanelLayout.setHorizontalGroup(
+            produtosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(produtosPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(produtosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(produtosCamboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(produtoLabel))
+                .addGap(18, 18, 18)
+                .addGroup(produtosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(produtosPanelLayout.createSequentialGroup()
+                        .addComponent(qntTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(adicionarButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(removerButton))
+                    .addComponent(qntLabel))
+                .addGap(102, 102, 102)
+                .addGroup(produtosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(valorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valorLabel))
+                .addContainerGap(249, Short.MAX_VALUE))
+        );
+        produtosPanelLayout.setVerticalGroup(
+            produtosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(produtosPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(produtosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(produtosPanelLayout.createSequentialGroup()
+                        .addGroup(produtosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(qntLabel)
+                            .addComponent(produtoLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(produtosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(produtosCamboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(qntTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(produtosPanelLayout.createSequentialGroup()
+                        .addComponent(valorLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(produtosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(adicionarButton)
+                            .addComponent(removerButton)
+                            .addComponent(valorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+
+        finalizacaoPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        enderecosLabel.setText("Endereços");
+
+        enderecos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        pagamentoLabel.setText("Forma de pagamento");
+
+        creditoRadioBtn.setText("Cartão de débito");
+
+        debitoRadioBtn.setText("Cartão de crédito");
+
+        pixRadioBtn.setText("PIX");
+
+        finalizarButton.setText("Finalizar Compra");
+
+        javax.swing.GroupLayout finalizacaoPanelLayout = new javax.swing.GroupLayout(finalizacaoPanel);
+        finalizacaoPanel.setLayout(finalizacaoPanelLayout);
+        finalizacaoPanelLayout.setHorizontalGroup(
+            finalizacaoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(finalizacaoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(finalizacaoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(enderecos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(enderecosLabel))
+                .addGap(58, 58, 58)
+                .addGroup(finalizacaoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pagamentoLabel)
+                    .addComponent(pixRadioBtn)
+                    .addGroup(finalizacaoPanelLayout.createSequentialGroup()
+                        .addGroup(finalizacaoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(creditoRadioBtn)
+                            .addComponent(debitoRadioBtn))
+                        .addGap(58, 58, 58)
+                        .addComponent(finalizarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        finalizacaoPanelLayout.setVerticalGroup(
+            finalizacaoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(finalizacaoPanelLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(finalizacaoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(enderecosLabel)
+                    .addComponent(pagamentoLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(finalizacaoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(finalizacaoPanelLayout.createSequentialGroup()
+                        .addComponent(finalizarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(finalizacaoPanelLayout.createSequentialGroup()
+                        .addGroup(finalizacaoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(enderecos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(debitoRadioBtn, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(creditoRadioBtn)
+                        .addGap(0, 9, Short.MAX_VALUE)))
+                .addComponent(pixRadioBtn)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout conteudoPanelLayout = new javax.swing.GroupLayout(conteudoPanel);
+        conteudoPanel.setLayout(conteudoPanelLayout);
+        conteudoPanelLayout.setHorizontalGroup(
+            conteudoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(conteudoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(conteudoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(finalizacaoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(produtosPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        conteudoPanelLayout.setVerticalGroup(
+            conteudoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(conteudoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(produtosPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(finalizacaoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
+        );
 
         historicoMenu.setText("Historico de Compras");
-        historicoMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                historicoMenuActionPerformed(evt);
-            }
-        });
-        jMenu2.add(historicoMenu);
+        jMenuBar1.add(historicoMenu);
 
-        enderecoMenu.setText("Endereço");
-        jMenu2.add(enderecoMenu);
+        enderecosMenu.setText("Endereços");
+        jMenuBar1.add(enderecosMenu);
 
         sairMenu.setText("Sair");
-        sairMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sairMenuActionPerformed(evt);
-            }
-        });
-        jMenu2.add(sairMenu);
-
-        jMenuBar1.add(jMenu2);
-
-        jMenu1.setText("Pesquisar");
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(sairMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -78,30 +262,39 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 980, Short.MAX_VALUE)
+            .addComponent(conteudoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 528, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(conteudoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void sairMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairMenuActionPerformed
-        new TelaInicio().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_sairMenuActionPerformed
+    private void removerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_removerButtonActionPerformed
 
-    private void historicoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoMenuActionPerformed
-        new TelaHistoricoCompras().setVisible(true);
-    }//GEN-LAST:event_historicoMenuActionPerformed
+    private void adicionarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarButtonActionPerformed
+        String produtoSelecionado = (String) produtosCamboBox.getSelectedItem();
+        carrinho.add(produtosCamboBox);
+    }//GEN-LAST:event_adicionarButtonActionPerformed
 
-    private void carrinhoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carrinhoMenuActionPerformed
-        new TelaCarrinho().setVisible(true);
+    private void produtosCamboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtosCamboBoxActionPerformed
+        produtosCamboBox.removeAllItems();
         
-    }//GEN-LAST:event_carrinhoMenuActionPerformed
+        
+        for (Produto produto : prDAO.listar().) {
+            comboBoxProdutos.addItem(produto.getNome());
+        }
+                
+    }//GEN-LAST:event_produtosCamboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,14 +331,37 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void setTableModel(Object[][] rowData, Object[] columnNames) {
+        DefaultTableModel tableModel = new DefaultTableModel(rowData, columnNames);
+        carrinho.setModel(tableModel); //define o modelo para a criação da tabela
+        carrinho.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem carrinhoMenu;
-    private javax.swing.JMenuItem enderecoMenu;
-    private javax.swing.JMenuItem historicoMenu;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JButton adicionarButton;
+    private javax.swing.JTable carrinho;
+    private javax.swing.JPanel conteudoPanel;
+    private javax.swing.JRadioButton creditoRadioBtn;
+    private javax.swing.JRadioButton debitoRadioBtn;
+    private javax.swing.JComboBox<String> enderecos;
+    private javax.swing.JLabel enderecosLabel;
+    private javax.swing.JMenu enderecosMenu;
+    private javax.swing.JPanel finalizacaoPanel;
+    private javax.swing.JButton finalizarButton;
+    private javax.swing.JMenu historicoMenu;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem sairMenu;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel pagamentoLabel;
+    private javax.swing.JRadioButton pixRadioBtn;
+    private javax.swing.JLabel produtoLabel;
+    private javax.swing.JComboBox<String> produtosCamboBox;
+    private javax.swing.JPanel produtosPanel;
+    private javax.swing.JLabel qntLabel;
+    private javax.swing.JFormattedTextField qntTextField;
+    private javax.swing.JButton removerButton;
+    private javax.swing.JMenu sairMenu;
+    private javax.swing.JLabel valorLabel;
+    private javax.swing.JTextField valorTextField;
     // End of variables declaration//GEN-END:variables
 }
