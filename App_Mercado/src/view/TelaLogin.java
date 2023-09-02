@@ -6,8 +6,8 @@ package view;
 
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
-import models.beans.Usuario;
-import models.dao.UsuarioDAO;
+import model.entity.Usuario;
+import model.dao.UsuarioDAO;
 import view.TelaInicio;
 
 /**

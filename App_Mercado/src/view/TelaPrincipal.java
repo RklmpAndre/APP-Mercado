@@ -6,8 +6,8 @@ package view;
 
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-import models.beans.Produto;
-import models.dao.ProdutoDAO;
+import model.entity.Produto;
+import model.dao.ProdutoDAO;
 
 /**
  *
@@ -347,7 +347,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_produtosCamboBoxActionPerformed
 
     private void abaProdutoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abaProdutoMenuActionPerformed
-        new TelaCadastroProduto().setVisible(true);
+        new TelaAdministraProduto().setVisible(true);
     }//GEN-LAST:event_abaProdutoMenuActionPerformed
 
     private void abaUsuarioMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abaUsuarioMenuActionPerformed
