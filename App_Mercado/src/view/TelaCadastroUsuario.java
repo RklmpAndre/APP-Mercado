@@ -309,6 +309,8 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         if (status) {
             usuario = new Usuario(nome, cpf, dataAniversario, email, senha);
             
+            
+            
             if (uDAO.create(usuario)) {
                 JOptionPane.showMessageDialog(this, "Usuario cadastrado com sucesso!");
                 new TelaPrincipal().setVisible(true);

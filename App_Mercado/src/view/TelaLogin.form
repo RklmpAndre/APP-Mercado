@@ -89,7 +89,7 @@
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="129" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -135,10 +135,10 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="senhaLabel" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
                       <Component id="loginLabel" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
-                      <Component id="loginCampo" alignment="0" pref="322" max="32767" attributes="0"/>
-                      <Component id="senhaCampo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="senhaCampo" alignment="0" pref="322" max="32767" attributes="0"/>
+                      <Component id="loginCampo" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="92" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
@@ -154,9 +154,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Component id="loginLabel" min="-2" pref="27" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="loginCampo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Component id="senhaLabel" min="-2" pref="27" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="senhaCampo" min="-2" max="-2" attributes="0"/>
@@ -181,10 +181,11 @@
             <Property name="text" type="java.lang.String" value="Login"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="loginCampo">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginCampoActionPerformed"/>
-          </Events>
+        <Component class="javax.swing.JFormattedTextField" name="loginCampo">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(CpfMask);"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="MaskFormatter CpfMask = null;&#xa;try{&#xa;CpfMask= new MaskFormatter(&quot;###.###.###-##&quot;);&#xa;} catch (Exception e){&#xa;e.printStackTrace();&#xa;}"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="senhaLabel">
           <Properties>

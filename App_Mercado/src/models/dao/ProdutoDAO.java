@@ -30,7 +30,7 @@ public class ProdutoDAO implements DAO {
         
     }
     
-    HashMap<Integer, Produto> dados = new HashMap<>();
+    private HashMap<Integer, Produto> dados = new HashMap<>();
     
     
     @Override
