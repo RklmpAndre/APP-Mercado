@@ -1,11 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model.entity;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -13,7 +11,8 @@ import java.util.Objects;
  * @author Convidado
  */
 public class Usuario {
-
+    
+    private List<Endereco> enderecos;
     private String nome, cpf, email, senha;
     private LocalDate dataNascimento;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -24,6 +23,7 @@ public class Usuario {
         setDataNascimento(dataNascimento);
         setEmail(email);
         setSenha(senha);
+        enderecos = new ArrayList<>();
     }
 
     public String getNome() {
