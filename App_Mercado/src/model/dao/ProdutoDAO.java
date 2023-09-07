@@ -21,7 +21,7 @@ public class ProdutoDAO implements DAO{
         return prdao;   
     }
     
-     //É private para evitar que o PessoaDAO seja criado de outra forma que
+    //É private para evitar que o PessoaDAO seja criado de outra forma que
     // não seja através do método getInstance.
     public ProdutoDAO(){
         
