@@ -190,7 +190,7 @@ public class TelaLogin extends javax.swing.JFrame {
         usuario = (Usuario) uDAO.read(login);
         
         if(usuario.getCpf().equals(login) && usuario.getSenha().equals(senha)){
-            new TelaPrincipal().setVisible(true);
+            new TelaLoja().setVisible(true);
             this.setVisible(false);
         }else{
             JOptionPane.showMessageDialog(null, "Usuario não encontrado");

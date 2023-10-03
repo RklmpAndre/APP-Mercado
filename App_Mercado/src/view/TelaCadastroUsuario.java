@@ -313,7 +313,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
             
             if (uDAO.create(usuario)) {
                 JOptionPane.showMessageDialog(this, "Usuario cadastrado com sucesso!");
-                new TelaPrincipal().setVisible(true);
+                new TelaLoja().setVisible(true);
                 this.setVisible(false);
             }else{
                 JOptionPane.showMessageDialog(null, "CPF já cadastrado");
